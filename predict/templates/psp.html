@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Nepre-PSP</title>
+    {% load staticfiles %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="{% static "./4/flatly/bootstrap.css" %}" media="screen">
+    <link rel="stylesheet" href="{% static "./_assets/css/custom.min.css" %}">
+    <script>
+
+     var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-23019901-1']);
+      _gaq.push(['_setDomainName', "bootswatch.com"]);
+        _gaq.push(['_setAllowLinker', true]);
+      _gaq.push(['_trackPageview']);
+
+     (function() {
+       var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+       ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+     })();
+
+    </script>
+  </head>
+  <body>
+    <div class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
+      <div class="container">
+        <a href="/index/" class="navbar-brand">Nepre</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="/index/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/introduction/">Introduction</a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link" href="/method/">Method</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/psp/">Protein Structure Predict</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/AminoAcidDistribution/">Amino Acid Distribution</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/checkResults/">History</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/download/">Download</a>
+            </li>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+    <div class="page-header" id="banner" style = "margin-left: 80px">
+        <div class="row">
+          <div class="col-lg-8 col-md-7 col-sm-6">
+            <h1>Protein Sturcture Predict</h1>
+          </div>
+        </div>
+      </div>
+
+    <div style = "margin-left: 80px">
+        <h4>The Online Application</h4>
+    </div>
+    <div style="margin-left:80px; margin-right:80px">
+      <hr></hr>
+    </div>
+    <div style = "margin-left:80px; margin-top:40px; margin-right:80px">
+      <h4 style = "color:cornflowerblue">Notes</h4>
+      <hr></hr>
+      <p>
+         We calculate the energy of the decoy structures and selecte the structure which has lowest energy as the prediction.  
+      </p>
+      <p>It will take several minutes to finish the calculate.</p>
+      <p class="text-danger">You should compress the decoy strutures to an *.zip file and then upload.</p>  
+   </div>
+   <div style = "margin-left: 80px; margin-right: 900px">
+      <form action="/pspResults/" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          <fieldset>
+            <div class="form-group">
+              <label for="exampleInputFile">File input</label>
+              <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp" name = "up_file">
+              <small id="fileHelp" class="form-text text-muted">Please upload a zip file.</small>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </fieldset>
+        </form>
+   </div>
+
+    
+      
+
+
+      
+
+
+<script src="{% static "./_vendor/jquery/dist/jquery.min.js" %}"></script>
+<script src="{% static "./_vendor/popper.js/dist/umd/popper.min.js" %}"></script>
+<script src="{% static "./_vendor/bootstrap/dist/js/bootstrap.min.js" %}"></script>
+<script src="{% static "./_assets/js/custom.js" %}"></script>
+
+
+<div class="text" style=" text-align:center;">Building 9, East Zone, ZPark II, No.10 East Xibeiwang Road, Haidian District, Beijing 100193, China</div>
+<div class="text" style=" text-align:center;">Department of Complex System</div>
+<div class="text" style=" text-align:center;">Email: nepre2018@163.com</div>
+</body>
+
+</html>
+

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Nepre-AminoAcidDistribution</title>
+    {% load staticfiles %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="{% static "./4/flatly/bootstrap.css" %}" media="screen">
+    <link rel="stylesheet" href="{% static "./_assets/css/custom.min.css" %}">
+    <script>
+
+     var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-23019901-1']);
+      _gaq.push(['_setDomainName', "bootswatch.com"]);
+        _gaq.push(['_setAllowLinker', true]);
+      _gaq.push(['_trackPageview']);
+
+     (function() {
+       var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+       ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+     })();
+
+    </script>
+  </head>
+  <body>
+    <div class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
+      <div class="container">
+        <a href="/index/" class="navbar-brand">Nepre</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="/index/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/introduction/">Introduction</a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link" href="/method/">Method</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/psp/">Protein Structure Predict</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/AminoAcidDistribution/">Amino Acid Distribution</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/checkResults/">History</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/download/">Download</a>
+            </li>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+    <div class="page-header" id="banner" style = "margin-left: 80px">
+        <div class="row">
+          <div class="col-lg-8 col-md-7 col-sm-6">
+            <h1>Amino Acid Pairs Distribution</h1>
+          </div>
+        </div>
+      </div>
+
+    
+    <div style="margin-left:80px; margin-right:80px">
+      <hr></hr>
+    </div>
+
+    <div style = "margin-left:80px; margin-top:40px; margin-right:80px">
+      <h4 style = "color:cornflowerblue">Introduction</h4>
+      <hr></hr>
+      <p>Each kind amino acid has own ditribution preference. We counted the existing PDB dataset(June 2017) and
+         analyzed the distribution of each kind of amino acid pairs. </p>
+      <p>For each kind of amino acid pair, we establish a spherical coordinate and split them as fllows,</p>
+      
+    </div>
+    <div style="margin-left:400px;margin-top:20px;margin-right:400px">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Paramter</th>
+          <th scope="col">r</th>
+          <th scope="col">θ</th>
+          <th scope="col">φ</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="table-default">
+          <th scope="row">Total</th>
+          <td>10Å</td>
+          <td>180°</td>
+          <td>360°</td>
+        </tr>
+        <tr class="table-default">
+          <th scope="row">Subinterval Amount</th>
+          <td>5</td>
+          <td>20</td>
+          <td>20</td>
+        </tr>
+      </tbody>
+    </table> 
+    </div>
+    <div style="margin-left:80px">
+        <p>According to the statitical analysis of the <b>r</b> paramter, we find that it is almost empty when 
+          setting <b>r</b>> to [0,6] angstrom. So subintervals of r direction are splited as fllows, 
+        </p>
+    </div>
+    <div style="margin-left:400px;margin-top:20px;margin-right:600px">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">NO</th>
+              <th scope="col">Subinterval(Å)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="table-default">
+              <th scope="row">0</th>
+              <td>[0,6]</td>
+            </tr>
+            <tr class="table-default">
+                <th scope="row">1</th>
+                <td>(6,7]</td>
+            </tr>
+            <tr class="table-default">
+                <th scope="row">2</th>
+                <td>(7,8]</td>
+            </tr>
+            <tr class="table-default">
+                <th scope="row">3</th>
+                <td>(8,9]</td>
+            </tr>
+            <tr class="table-default">
+                <th scope="row">4</th>
+                <td>(9,10]</td>
+            </tr>
+          </tbody>
+        </table> 
+    </div>
+    <div style = "margin-left:80px; margin-top:40px; margin-right:80px">
+        <h4 style = "color:cornflowerblue">Application</h4>
+        <hr></hr>
+      </div>
+    <form class = "form-inline" method = "post" action="/getAADistribute/">
+    {% csrf_token %}
+    <fieldset>
+    <div style="margin-left:80px">
+    <p class="text-danger">Notes: ALA-GLY is different from GLY-ALA</p>
+    <p><b>Center Amino Acid Type</b> means the amino acid type of the origin of the spherical coordinate.   <b>Surround Amino Acid Type</b> means the paired amino acid type.</p>
+    </div>
+    <div class="form-group" style = "margin-left:80px;margin-top:10px;margin-right:1620px;float:left;display:inline">
+        <label>Center</label>
+        <select style="height:30px;font-size:14px" name="center">
+          <option>ALA</option>
+          <option>VAL</option>
+          <option>LEU</option>
+          <option>ILE</option>
+          <option>PHE</option>
+          <option>TRP</option>
+          <option>MET</option>
+          <option>PRO</option>
+          <option>GLY</option>
+          <option>SER</option>
+          <option>THR</option>
+          <option>CYS</option>
+          <option>TYR</option>
+          <option>ASN</option>
+          <option>GLN</option>
+          <option>HIS</option>
+          <option>LYS</option>
+          <option>ARG</option>
+          <option>ASP</option>
+          <option>GLU</option>
+        </select>
+      </div>
+      
+      <div class="form-group" style = "margin-left:80px;margin-top:10px;margin-right:1600px;float:left;display:inline">
+          <label>Surround:</label>
+          <div class="form-group">
+          <select style="height:30px;font-size:14px" name="surround">
+            <option>ALA</option>
+            <option>VAL</option>
+            <option>LEU</option>
+            <option>ILE</option>
+            <option>PHE</option>
+            <option>TRP</option>
+            <option>MET</option>
+            <option>PRO</option>
+            <option>GLY</option>
+            <option>SER</option>
+            <option>THR</option>
+            <option>CYS</option>
+            <option>TYR</option>
+            <option>ASN</option>
+            <option>GLN</option>
+            <option>HIS</option>
+            <option>LYS</option>
+            <option>ARG</option>
+            <option>ASP</option>
+            <option>GLU</option>
+          </select>
+        </div>
+    </div>
+    <div class="form-group" style = "margin-left:80px;margin-top:10px;margin-right:1600px;float:left;display:inline">
+      <label>Layer:</label>
+      <div class="form-group">
+      <select style="height:30px;font-size:14px" name="layer">
+        <option>0</option>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+      </select>
+      </div>
+    </div>
+    </fieldset>
+    <button type="submit" class="btn btn-primary" style="margin-left:80px;margin-top:20px">Submit</button>
+    </form>
+    
+
+    <div style = "margin-left:80px; margin-top:40px; margin-right:80px">
+        <h4 style = "color:cornflowerblue">Radius Distribution</h4>
+        <hr></hr>
+    </div>
+    
+    
+
+    
+
+    
+  
+
+    
+<script src="{% static "./_vendor/jquery/dist/jquery.min.js" %}"></script>
+<script src="{% static "./_vendor/popper.js/dist/umd/popper.min.js" %}"></script>
+<script src="{% static "./_vendor/bootstrap/dist/js/bootstrap.min.js" %}"></script>
+<script src="{% static "./_assets/js/custom.js" %}"></script>
+
+
+<div class="text" style=" text-align:center;margin-top: 120px">Building 9, East Zone, ZPark II, No.10 East Xibeiwang Road, Haidian District, Beijing 100193, China</div>
+<div class="text" style=" text-align:center;">Department of Complex System</div>
+<div class="text" style=" text-align:center;">Email: nepre2018@163.com</div>
+</body>
+
+</html>
+

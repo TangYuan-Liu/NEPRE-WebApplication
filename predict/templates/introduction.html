@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Nepre-Introduction</title>
+    {% load staticfiles %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="{% static "./4/flatly/bootstrap.css" %}" media="screen">
+    <link rel="stylesheet" href="{% static "./_assets/css/custom.min.css" %}">
+    <script>
+
+     var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-23019901-1']);
+      _gaq.push(['_setDomainName', "bootswatch.com"]);
+        _gaq.push(['_setAllowLinker', true]);
+      _gaq.push(['_trackPageview']);
+
+     (function() {
+       var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+       ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+     })();
+
+    </script>
+  </head>
+  <body>
+    <div class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
+      <div class="container">
+        <a href="/index/" class="navbar-brand">Nepre</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="/index/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/introduction/">Introduction</a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link" href="/method/">Method</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/psp/">Protein Structure Predict</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/AminoAcidDistribution/">Amino Acid Distribution</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/checkResults/">History</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/download/">Download</a>
+            </li>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+    <div class="page-header" id="banner" style = "margin-left: 80px">
+        <div class="row">
+          <div class="col-lg-8 col-md-7 col-sm-6">
+            <h1>Introduction</h1>
+          </div>
+        </div>
+    </div>
+    <div style = "margin-left:80px; margin-top:40px; margin-right:80px">
+      <h4 style = "color:cornflowerblue">Background</h4>
+      <hr></hr>
+    </div>
+    <div style = "margin-left:100px; margin-top:40px; margin-right:100px">
+        <p>
+            Protein three-dimensional structure prediction is a very important part in structural informatics 
+            related research. After acquiring the three-dimensional structure of the protein, it is possible to 
+            design a protein drug according to the function of its specific structure, 
+            or to modify its structure using a protein engineering method.
+
+            There are many methods for predicting the three-dimensional structure of proteins, mainly based on 
+            three types of methods, based on physical and chemical principles, statistical principles, and biological 
+            principles. The physicochemical principle-based method aims to obtain the energy of the protein structure 
+            by calculating the electrostatic force and van der Waals force between the individual amino acids in the 
+            protein. The statistical principle-based method aims to predict the three-dimensional structure of a protein 
+            by statistically analyzing proteins of known structure to obtain a statistically significant distribution of 
+            amino acids. The biology-based approach primarily uses homology modeling techniques to predict proteins of 
+            unknown structure by looking for protein fragments that play a key role in protein structure and protein 
+            reactions, compared to known information.
+        </p>
+        <p>
+            We provide a protein structure predic algorithm based on statistical model, which is more effective and
+            efficient than previous. Meanwhile, online and offline systems are designed in order to provide users 
+            alternative choices. 
+        </p>
+    </div>
+
+    <div style = "margin-left:80px; margin-top:40px; margin-right:80px">
+        <h4 style = "color:cornflowerblue">Organization</h4>
+        <hr></hr>
+    </div>
+    <div style = "margin-left:100px; margin-top:40px; margin-right:100px">
+        <p>
+            The online system is organized as follows,
+            <p><b>Method</b> will introduce the detailed analysis of the algorithm.</p>
+            <p><b>Protein Structure Predict</b> will provide the online application for predicting protein tertiary struture.</p>
+            <p><b>Amino Acid Distribution</b> will display the amino acid pairs distribution tendency.</p>
+            <p><b>History</b> will provide a service for users to check their history results.</p>
+            <p><b>Download</b> will provide some doucuments and our offline system download service.</p>
+        </p>
+    </div>
+
+    <div style = "margin-left:80px; margin-top:40px; margin-right:80px">
+        <h4 style = "color:cornflowerblue">Features of SMBPSP</h4>
+        <hr></hr>
+    </div>
+
+    <div style = "margin-left: 90px; margin-bottom:40px">
+        <div class="row">
+            <div class="col-lg-4">
+              <div class="bs-component">
+                  <div class="card border-dark mb-3" style="max-width: 20rem;">
+                      <div class="card-header">Feature1</div>
+                      <div class="card-body">
+                        <h4 class="card-title">Protein 3D Structure Predict</h4>
+                        <p class="card-text">An efficient algorithm provided for predicting protein's 3D structure.</p>
+                      </div>
+                  </div>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="bs-component">
+                  <div class="card border-info mb-3" style="max-width: 20rem;">
+                      <div class="card-header">Feature2</div>
+                      <div class="card-body">
+                        <h4 class="card-title">Amino Acid Distribution Analyze</h4>
+                        <p class="card-text">Quick view of the distribution for amino acids. </p>
+                      </div>
+                  </div>
+              </div>
+            </div>
+  
+            <div class="col-lg-4">
+              <div class="bs-component">
+                  <div class="card border-success mb-3" style="max-width: 20rem;">
+                      <div class="card-header">Feature3</div>
+                      <div class="card-body">
+                        <h4 class="card-title">Online and Offline System Provided</h4>
+                        <p class="card-text">We also provide the offline system which is build by Python.</p>
+                      </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      
+
+
+      
+
+
+<script src="{% static "./_vendor/jquery/dist/jquery.min.js" %}"></script>
+<script src="{% static "./_vendor/popper.js/dist/umd/popper.min.js" %}"></script>
+<script src="{% static "./_vendor/bootstrap/dist/js/bootstrap.min.js" %}"></script>
+<script src="{% static "./_assets/js/custom.js" %}"></script>
+
+
+<div class="text" style=" text-align:center;">Building 9, East Zone, ZPark II, No.10 East Xibeiwang Road, Haidian District, Beijing 100193, China</div>
+<div class="text" style=" text-align:center;">Department of Complex System</div>
+<div class="text" style=" text-align:center;">Email: nepre2018@163.com</div>
+</body>
+
+</html>
+

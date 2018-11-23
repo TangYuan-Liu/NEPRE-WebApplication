@@ -34,9 +34,6 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" href="/index/">Home</a>
-            </li>
-            <li class="nav-item">
               <a class="nav-link" href="/introduction/">Introduction</a>
             </li>
             
@@ -56,7 +53,6 @@
               <a class="nav-link" href="/download/">Download</a>
             </li>
           </ul>
-
         </div>
       </div>
     </div>
@@ -71,27 +67,28 @@
       <h4 style = "color:cornflowerblue">Background</h4>
       <hr></hr>
     </div>
-    <div style = "margin-left:100px; margin-top:40px; margin-right:100px">
+    <div style = "margin-left:100px; margin-top:40px; margin-right:150px;text-align: justify">
         <p>
-            Protein three-dimensional structure prediction is a very important part in structural informatics 
-            related research. After acquiring the three-dimensional structure of the protein, it is possible to 
-            design a protein drug according to the function of its specific structure, 
-            or to modify its structure using a protein engineering method.
-
-            There are many methods for predicting the three-dimensional structure of proteins, mainly based on 
-            three types of methods, based on physical and chemical principles, statistical principles, and biological 
-            principles. The physicochemical principle-based method aims to obtain the energy of the protein structure 
-            by calculating the electrostatic force and van der Waals force between the individual amino acids in the 
-            protein. The statistical principle-based method aims to predict the three-dimensional structure of a protein 
-            by statistically analyzing proteins of known structure to obtain a statistically significant distribution of 
-            amino acids. The biology-based approach primarily uses homology modeling techniques to predict proteins of 
-            unknown structure by looking for protein fragments that play a key role in protein structure and protein 
-            reactions, compared to known information.
+            <b>Nepre</b>(Scoring Function for Protein Structure Assessment Based on Neighbourhood Preference) provide a 
+            efficient, portable and flexible python module to use. By using the online server, you can finish the
+            calculating job with a single browser.
         </p>
         <p>
-            We provide a protein structure predic algorithm based on statistical model, which is more effective and
-            efficient than previous. Meanwhile, online and offline systems are designed in order to provide users 
-            alternative choices. 
+            There are many methods for predicting the three-dimensional structure of proteins, mainly based on 
+            physical and chemical principles, statistical principles, and biological principles. Nepre establishes
+            the algorithm by using a statistical result of the Protein Data Bank. 
+        </p>
+        <p>
+            Nepre provide two sub-algorithm for evaluating the structure, <b>Nepre-R</b> and <b>Nepre-F</b>. 
+        </p> 
+        <p>   
+            <b>Nepre-R</b> uses the statistical result of radius of each kind amino acid as the distance paramter, amino 
+            pairs which the distance lower than the sum of radius will be regard as the effective pair. The radius 
+            is the gaussian mean value of the statistical results.
+        </p>
+        <p>
+            <b>Nepre-F</b> uses a relatively universal distance parameter, <b>6 angstrom</b>, as the distance cutoff. 
+            Amino pairs which the distance lower than 6 angstrom will be regard as the effective pair.
         </p>
     </div>
 
@@ -99,9 +96,9 @@
         <h4 style = "color:cornflowerblue">Organization</h4>
         <hr></hr>
     </div>
-    <div style = "margin-left:100px; margin-top:40px; margin-right:100px">
+    <div style = "margin-left:100px; margin-top:40px; margin-right:100px;text-align: justify">
         <p>
-            The online system is organized as follows,
+            The Nepre  WebServer is organized as follows,
             <p><b>Method</b> will introduce the detailed analysis of the algorithm.</p>
             <p><b>Protein Structure Predict</b> will provide the online application for predicting protein tertiary struture.</p>
             <p><b>Amino Acid Distribution</b> will display the amino acid pairs distribution tendency.</p>
@@ -109,56 +106,6 @@
             <p><b>Download</b> will provide some doucuments and our offline system download service.</p>
         </p>
     </div>
-
-    <div style = "margin-left:80px; margin-top:40px; margin-right:80px">
-        <h4 style = "color:cornflowerblue">Features of SMBPSP</h4>
-        <hr></hr>
-    </div>
-
-    <div style = "margin-left: 90px; margin-bottom:40px">
-        <div class="row">
-            <div class="col-lg-4">
-              <div class="bs-component">
-                  <div class="card border-dark mb-3" style="max-width: 20rem;">
-                      <div class="card-header">Feature1</div>
-                      <div class="card-body">
-                        <h4 class="card-title">Protein 3D Structure Predict</h4>
-                        <p class="card-text">An efficient algorithm provided for predicting protein's 3D structure.</p>
-                      </div>
-                  </div>
-              </div>
-            </div>
-            <div class="col-lg-4">
-              <div class="bs-component">
-                  <div class="card border-info mb-3" style="max-width: 20rem;">
-                      <div class="card-header">Feature2</div>
-                      <div class="card-body">
-                        <h4 class="card-title">Amino Acid Distribution Analyze</h4>
-                        <p class="card-text">Quick view of the distribution for amino acids. </p>
-                      </div>
-                  </div>
-              </div>
-            </div>
-  
-            <div class="col-lg-4">
-              <div class="bs-component">
-                  <div class="card border-success mb-3" style="max-width: 20rem;">
-                      <div class="card-header">Feature3</div>
-                      <div class="card-body">
-                        <h4 class="card-title">Online and Offline System Provided</h4>
-                        <p class="card-text">We also provide the offline system which is build by Python.</p>
-                      </div>
-                  </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      
-
-
-      
-
 
 <script src="{% static "./_vendor/jquery/dist/jquery.min.js" %}"></script>
 <script src="{% static "./_vendor/popper.js/dist/umd/popper.min.js" %}"></script>

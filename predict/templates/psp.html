@@ -34,9 +34,6 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" href="/index/">Home</a>
-            </li>
-            <li class="nav-item">
               <a class="nav-link" href="/introduction/">Introduction</a>
             </li>
             
@@ -63,46 +60,108 @@
     <div class="page-header" id="banner" style = "margin-left: 80px">
         <div class="row">
           <div class="col-lg-8 col-md-7 col-sm-6">
-            <h1>Protein Sturcture Predict</h1>
+            <h1>Protein Sturcture Assessment</h1>
           </div>
         </div>
-      </div>
+    </div>
 
-    <div style = "margin-left: 80px">
-        <h4>The Online Application</h4>
-    </div>
-    <div style="margin-left:80px; margin-right:80px">
-      <hr></hr>
-    </div>
     <div style = "margin-left:80px; margin-top:40px; margin-right:80px">
-      <h4 style = "color:cornflowerblue">Notes</h4>
-      <hr></hr>
-      <p>
-         We calculate the energy of the decoy structures and selecte the structure which has lowest energy as the prediction.  
-      </p>
-      <p>It will take several minutes to finish the calculate.</p>
-      <p class="text-danger">You should compress the decoy strutures to an *.zip file and then upload.</p>  
+        <h4 style = "color:cornflowerblue">Notes</h4>
+        <hr></hr>
+    </div>
+    <div style = "margin-left:120px; margin-top:40px; margin-right:120px">
+      <div>
+          <p>
+              <b>Job ID</b>
+          </p>
+          <p>
+              Each job will has an id. You need to use the job id to check the results.    
+          </p>
+      </div>
+      <div style = "margin-top:40px;">
+          <p>
+              <b>Upload File Format</b>
+          </p>
+          <p class="text-danger">
+              You should compress the decoy strutures to an <b>zip</b> file and then upload.
+          </p>
+      </div>  
    </div>
-   <div style = "margin-left: 80px; margin-right: 900px">
-      <form action="/pspResults/" method="post" enctype="multipart/form-data">
-          {% csrf_token %}
-          <fieldset>
-            <div class="form-group">
-              <label for="exampleInputFile">File input</label>
-              <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp" name = "up_file">
-              <small id="fileHelp" class="form-text text-muted">Please upload a zip file.</small>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </fieldset>
+
+   <div style = "margin-left:80px; margin-top:40px; margin-right:80px">
+      <h4 style = "color:cornflowerblue">Nepre-R</h4>
+      <hr></hr>
+   </div>
+   <div style = "margin-left: 120px; margin-right: 120px;margin-top:40px;text-align: justify">
+        <p>
+            Nepre-R uses the sum of the radius as the distance cutoff. Only pair with distance lower than
+            cutoff will be regarded as the effective pair. The following figure shows the maximum distance
+            of amino acid pair. Go to <a href="https://github.com/TangYuan-Liu/Nepre/tree/master/Radius">Radius
+            Value</a> to see the detailed information.
+        </p>
+        <div style = "text-align: center">
+            <img src="{% static "./origin_pics/fig8.png"%}" width="30%" height="30%"></img>
+        </div>
+
+        <form action="/pspResults/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <fieldset>
+              <div class="form-group">
+                <label for="exampleInputFile">File input</label>
+                <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp" name = "NRup_file">
+                <small id="NRfileHelp" class="form-text text-muted">Please upload a zip file.</small>
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </fieldset>
         </form>
    </div>
 
+
+   <div style = "margin-left:80px; margin-top:40px; margin-right:80px">
+      <h4 style = "color:cornflowerblue">Nepre-F</h4>
+      <hr></hr>
+   </div>
+   <div style = "margin-left: 120px; margin-right: 120px;margin-top:40px;text-align: justify">
+        <p>
+            Nepre-F use a more universal value as cutoff. Experiment shows that Nepre-F gets best
+            recognition setting cutoff to <b>6 angstrom</b> from <b>4-10 angstrom</b>. It is also significant
+            to analyze the <b>Pearson Coefficient</b> between <b>Nepre-F potential energy</b> and <b>RMSD</b>.
+            The following figure shows the same conclusion in the view of pearson coefficient as well. 
+        </p>
+        <div style = "text-align: center">
+            <img src="{% static "./origin_pics/fig5.png"%}" width="70%" height="70%"></img>
+        </div>
+
+        <form action="/pspResults/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <fieldset>
+              <div class="form-group">
+                <div>
+                    <label for="exampleInputFile">File input</label>
+                    <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp" name = "NFup_file">
+                    <small id="NFfileHelp" class="form-text text-muted">Please upload a zip file.</small>
+                </div>
+                <div style="margin-top:10px">
+                    <label for="exampleSelect1">Cutoff Select</label>
+                    <select class="form-control col-sm-1" id="exampleSelect1">
+                      <option>4</option>
+                      <option>5</option>
+                      <option>6</option>
+                      <option>7</option>
+                      <option>8</option>
+                      <option>9</option>
+                      <option>10</option>
+                  </select>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+
+            </fieldset>
+        </form>
+   </div>
+
+
     
-      
-
-
-      
-
 
 <script src="{% static "./_vendor/jquery/dist/jquery.min.js" %}"></script>
 <script src="{% static "./_vendor/popper.js/dist/umd/popper.min.js" %}"></script>

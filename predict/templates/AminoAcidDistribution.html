@@ -170,172 +170,86 @@
               It shows that each kind of amino acid pair in different layer has some specific concentrated 
               distribution area, which suggests that amino acid pairs tend to appear in these regions.
           </p>
-
-
       </div>
     </div>
     
 
 
-
-    <div style = "margin-left:80px; margin-top:40px; margin-right:80px">
-        <h4 style = "color:cornflowerblue">Application</h4>
-        <hr></hr>
-    </div>
-    <div>
-    <form class = "form-inline" method = "post" action="/getAADistribute/">
-    {% csrf_token %}
-    <fieldset>
-    <div style="margin-left:120px">
-    <p class="text-danger">Notes: ALA-GLY is different from GLY-ALA</p>
-    <p><b>Center Amino Acid Type</b> means the amino acid type of the origin of the spherical coordinate.   <b>Surround Amino Acid Type</b> means the paired amino acid type.</p>
-    </div>
-    <div style = "margin-bottom:2px;text-align: center">
-        <div class="row">
-            <div class="col-lg-3">
-                <select style="height:30px;font-size:14px" name="center">
-                    <option>ALA</option>
-                    <option>VAL</option>
-                    <option>LEU</option>
-                    <option>ILE</option>
-                    <option>PHE</option>
-                    <option>TRP</option>
-                    <option>MET</option>
-                    <option>PRO</option>
-                    <option>GLY</option>
-                    <option>SER</option>
-                    <option>THR</option>
-                    <option>CYS</option>
-                    <option>TYR</option>
-                    <option>ASN</option>
-                    <option>GLN</option>
-                    <option>HIS</option>
-                    <option>LYS</option>
-                    <option>ARG</option>
-                    <option>ASP</option>
-                    <option>GLU</option>
-                  </select>
-            </div>
-            <div class="col-lg-3">
-                <div class="form-group" style = "display:inline">
-                    <div class="form-group">
-                    <select style="height:30px;font-size:14px" name="surround">
-                      <option>ALA</option>
-                      <option>VAL</option>
-                      <option>LEU</option>
-                      <option>ILE</option>
-                      <option>PHE</option>
-                      <option>TRP</option>
-                      <option>MET</option>
-                      <option>PRO</option>
-                      <option>GLY</option>
-                      <option>SER</option>
-                      <option>THR</option>
-                      <option>CYS</option>
-                      <option>TYR</option>
-                      <option>ASN</option>
-                      <option>GLN</option>
-                      <option>HIS</option>
-                      <option>LYS</option>
-                      <option>ARG</option>
-                      <option>ASP</option>
-                      <option>GLU</option>
-                    </select>
-                  </div>
-                </div>
-            </div>
-            <div class="col-lg-3">
-                <select style="height:30px;font-size:14px" name="layer">
-                    <option>0</option>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                  </select>
-            </div>
-          </div>
-    </div>
-    <div class="form-group" style = "margin-left:80px;margin-top:10px;margin-right:1620px;float:left;display:inline">
-        <label>Center</label>
-        <select style="height:30px;font-size:14px" name="center">
-          <option>ALA</option>
-          <option>VAL</option>
-          <option>LEU</option>
-          <option>ILE</option>
-          <option>PHE</option>
-          <option>TRP</option>
-          <option>MET</option>
-          <option>PRO</option>
-          <option>GLY</option>
-          <option>SER</option>
-          <option>THR</option>
-          <option>CYS</option>
-          <option>TYR</option>
-          <option>ASN</option>
-          <option>GLN</option>
-          <option>HIS</option>
-          <option>LYS</option>
-          <option>ARG</option>
-          <option>ASP</option>
-          <option>GLU</option>
-        </select>
+  <div style = "margin-left:80px; margin-top:40px; margin-right:80px">
+      <h4 style = "color:cornflowerblue">Application</h4>
+      <hr></hr>
+      <div style="margin-left:40px;text-align: justify">
+          Each amino acid pair has a center amino acid and a surround amino acid(<b>CYS-GLY</b> is different from
+          <b>GLY-CYS</b>). Choose a pair and select the layer. Then the following application will return the 
+          distribution preference of that kind of pair. 
       </div>
-      
-      <div class="form-group" style = "margin-left:80px;margin-top:10px;margin-right:1600px;float:left;display:inline">
-          <label>Surround:</label>
-          <div class="form-group">
-          <select style="height:30px;font-size:14px" name="surround">
+  </div>
+  <br></br>
+  <br></br>
+  <div style = "text-align: center">
+    <form class="form-inline" method="post" action="/getAADistribute/">
+      {% csrf_token %}
+      <div class="form-group" style="margin:auto">
+        <label><b>Center Amino Acid:&nbsp;</b></label>
+        <select style="height:30px;font-size:14px" name="center">
             <option>ALA</option>
-            <option>VAL</option>
-            <option>LEU</option>
-            <option>ILE</option>
-            <option>PHE</option>
-            <option>TRP</option>
-            <option>MET</option>
-            <option>PRO</option>
+            <option>ARG</option>
+            <option>ASN</option>
+            <option>ASP</option>
+            <option>CYS</option>
+            <option>GLN</option>
+            <option>GLU</option>
             <option>GLY</option>
+            <option>HIS</option>
+            <option>ILE</option>
+            <option>LEU</option>
+            <option>LYS</option>
+            <option>MET</option>
+            <option>PHE</option>
+            <option>PRO</option>
             <option>SER</option>
             <option>THR</option>
-            <option>CYS</option>
+            <option>TRP</option>
             <option>TYR</option>
-            <option>ASN</option>
-            <option>GLN</option>
-            <option>HIS</option>
-            <option>LYS</option>
+            <option>VAL</option>
+        </select>
+        <label><b>&nbsp;&nbsp; Surround Amino Acid:&nbsp;</b></label>
+        <select style="height:30px;font-size:14px" name="surround">
+            <option>ALA</option>
             <option>ARG</option>
+            <option>ASN</option>
             <option>ASP</option>
+            <option>CYS</option>
+            <option>GLN</option>
             <option>GLU</option>
-          </select>
-        </div>
+            <option>GLY</option>
+            <option>HIS</option>
+            <option>ILE</option>
+            <option>LEU</option>
+            <option>LYS</option>
+            <option>MET</option>
+            <option>PHE</option>
+            <option>PRO</option>
+            <option>SER</option>
+            <option>THR</option>
+            <option>TRP</option>
+            <option>TYR</option>
+            <option>VAL</option>
+        </select>
+        <label><b>&nbsp;&nbsp; Layer:&nbsp;</b></label>
+        <select style="height:30px;font-size:14px" name="layer">
+          <option>0</option>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+        </select>
+        <label> &nbsp;&nbsp;&nbsp; </label>
+        <button type="submit" class="btn btn-primary">Submit</button>
       </div>
-    <div class="form-group" style = "margin-left:80px;margin-top:10px;margin-right:1600px;float:left;display:inline">
-      <label>Layer:</label>
-      <div class="form-group">
-      <select style="height:30px;font-size:14px" name="layer">
-        <option>0</option>
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-      </select>
-      </div>
-    </div>
-    </fieldset>
-    <button type="submit" class="btn btn-primary" style="margin-left:80px;margin-top:20px">Submit</button>
     </form>
     </div>
-
-    <div style = "margin-left:80px; margin-top:40px; margin-right:80px">
-        <h4 style = "color:cornflowerblue">Radius Distribution</h4>
-        <hr></hr>
-    </div>
-    
-    
-
-    
-
-    
-  
+  </div>
 
     
 <script src="{% static "./_vendor/jquery/dist/jquery.min.js" %}"></script>
@@ -348,6 +262,5 @@
 <div class="text" style=" text-align:center;">Department of Complex System</div>
 <div class="text" style=" text-align:center;">Email: nepre2018@163.com</div>
 </body>
-
 </html>
 

@@ -15,8 +15,15 @@ The webserver for **Nepre**.
 * Get amino pair distribution of different layers.
 * Calculate the potential energy of a single or a series of PDB.
 
+## Cache File Location
+* ./uploadfiles
+* ./predict/static/download/potential
+* ./predict/static/pics
+* ./predict/templates/temp
+* ./predict/templates/results
+* ./predict/templates/AADistribute
 ## CopyRight
-Nepre-Online webserver is created by **LiuLab** of Beijing Computation Science Research Center(**CSRC**).
+Nepre-WebServer is created by **LiuLab** of **Beijing Computation Science Research Center(CSRC)**.
 
 ## Contact Us
 **Email**: nepre2018@163.com  

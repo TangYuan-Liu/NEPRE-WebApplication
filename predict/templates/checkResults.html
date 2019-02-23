@@ -34,12 +34,8 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" href="/index/">Home</a>
-            </li>
-            <li class="nav-item">
               <a class="nav-link" href="/introduction/">Introduction</a>
             </li>
-            
             <li class="nav-item">
               <a class="nav-link" href="/method/">Method</a>
             </li>
@@ -56,52 +52,43 @@
               <a class="nav-link" href="/download/">Download</a>
             </li>
           </ul>
-
         </div>
       </div>
     </div>
     <div class="page-header" id="banner" style = "margin-left: 80px">
         <div class="row">
           <div class="col-lg-8 col-md-7 col-sm-6">
-            <h1>Checking Results</h1>
+            <h1>History</h1>
           </div>
         </div>
-      </div>
-
-    
-    <div style="margin-left:80px; margin-right:80px">
-      <hr></hr>
     </div>
 
-    <div style = "margin-left:80px; margin-top:40px; margin-right:80px">
-      <h4 style = "color:cornflowerblue">Process Information</h4>
-      <hr></hr>
-      <p>Each job has an own ID, you can input your process ID to check the results</p>
-      <p>Meanwile, if you renember the job ID which has finished previously, it is also works.</p>
-    </div>
 
+    <div style = "margin-left:80px; margin-top:40px;margin-right: 80px">
+        <h4 style = "color:cornflowerblue">Check Nepre Results</h4>
+        <hr></hr>
+    </div>
+    <div style = "margin-left:120px;margin-right: 120px;text-align: justify">
+        <p>Each job has an unique id. Use job id to check the results.</p>
+        <p>We will help to save the results for several months. If the result is lost, you can use the ID to 
+           regain the result. Your result will only be retained for a few months. Please record and save the 
+           calculation results carefully.</p>
+    </div>
+    <div style = "margin-left:120px; margin-top:20px;margin-right: 120px">
     <form action="/getResultsPage/" method="post">
       {% csrf_token %}
         <fieldset>
-            <div class="form-group" style = "margin-left:80px; margin-top:20px; margin-right:960px">
+            <div class="form-group">
                 <label class="col-form-label" for="inputDefault">Job ID</label>
-                <input type="text" class="form-control" placeholder="Please input your job ID" id="inputDefault" name = "job_id">
+                <input type="text" class="form-control col-sm-3" placeholder="Please input your job ID" id="inputDefault" name = "job_id">
             </div>
-            <div style = "margin-left:80px; margin-top:10px; margin-right:960px">
+            <div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </div>
        </fieldset>
     </form>
+    </div>
 
-    
-  
-      
-      
-      
-
-
-
-    
 <script src="{% static "./_vendor/jquery/dist/jquery.min.js" %}"></script>
 <script src="{% static "./_vendor/popper.js/dist/umd/popper.min.js" %}"></script>
 <script src="{% static "./_vendor/bootstrap/dist/js/bootstrap.min.js" %}"></script>
@@ -112,6 +99,5 @@
 <div class="text" style=" text-align:center;">Department of Complex System</div>
 <div class="text" style=" text-align:center;">Email: nepre2018@163.com</div>
 </body>
-
 </html>
 

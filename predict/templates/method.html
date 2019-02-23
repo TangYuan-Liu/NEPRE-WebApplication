@@ -34,12 +34,8 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" href="/index/">Home</a>
-            </li>
-            <li class="nav-item">
               <a class="nav-link" href="/introduction/">Introduction</a>
             </li>
-            
             <li class="nav-item">
               <a class="nav-link" href="/method/">Method</a>
             </li>
@@ -56,7 +52,6 @@
               <a class="nav-link" href="/download/">Download</a>
             </li>
           </ul>
-
         </div>
       </div>
     </div>
@@ -68,118 +63,71 @@
         </div>
     </div>
     <div style = "margin-left:80px; margin-top:40px; margin-right:80px">
-      <h4 style = "color:cornflowerblue">Algorithm Results</h4>
+      <h4 style = "color:cornflowerblue">Introduction</h4>
       <hr></hr>
     </div>
-    <div style = "margin-left:80px; margin-top:40px; margin-right:100px">
+    <div style = "margin-left:120px; margin-top:40px; margin-right:120px;text-align: justify">
         <p>
-            In order to verify the validity of the algorithm, we test our scoring fuction in three recognized benchmark,
+            PDB(Protein Data Bank) maintains the world's largest protein database. By analyzing the it, 
+            we found that amino acids pairs have a very strong tendency in spatial distribution. Following two figure
+            show the tendency in a contour map.
         </p>
-            <p><b>1. The ability to select the native structures from the dataset.</b></p>
-            <p><b>2. The ability to select the best models from structural decoys when native structures have been excluded.</b></p>
-            <p><b>3. The correlation between protential and RMSD.</b></p>
-    </div>
-
-    <div style="margin-left:400px;margin-top:20px;margin-right:400px">
-        <table class="table table-hover">
-          <thead>
-            <tr>
-              <th scope="col">Decoy Sets</th>
-              <th scope="col">RW</th>
-              <th scope="col">RWplus</th>
-              <th scope="col">Nepre</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="table-default">
-              <th scope="row">on_I-TASSER</th>
-              <td>0/56</td>
-              <td></td>
-              <td>14/56</td>
-            </tr>
-            <tr class="table-default">
-              <th scope="row">on_Modeller</th>
-              <td>2/20</td>
-              <td></td>
-              <td>14/20</td>
-            </tr>
-            <tr class="table-default">
-              <th scope="row">on_ROSETTA</th>
-              <td>0/58</td>
-              <td></td>
-              <td>30/58</td>
-            </tr>
-            <tr class="table-default">
-              <th scope="row">3DRobot</th>
-              <td>0/200</td>
-              <td></td>
-              <td>159/200</td>
-            </tr>
-          </tbody>
-        </table> 
-      </div>
-
-    <div style = "margin-left:80px; margin-top:40px; margin-right:80px">
-        <h4 style = "color:cornflowerblue">Organization</h4>
-        <hr></hr>
-    </div>
-    <div style = "margin-left:100px; margin-top:40px; margin-right:100px">
-        <p>
-            The online system is organized as follows,
-            <p><b>Method</b> will introduce the detailed analysis of the algorithm.</p>
-            <p><b>Protein Structure Predict</b> will provide the online application for predicting protein tertiary struture.</p>
-            <p><b>Amino Acid Distribution</b> will display the amino acid pairs distribution tendency.</p>
-            <p><b>History</b> will provide a service for users to check their history results.</p>
-            <p><b>Download</b> will provide some doucuments and our offline system download service.</p>
-        </p>
-    </div>
-
-    <div style = "margin-left:80px; margin-top:40px; margin-right:80px">
-        <h4 style = "color:cornflowerblue">Features of SMBPSP</h4>
-        <hr></hr>
-    </div>
-
-    <div style = "margin-left: 90px; margin-bottom:40px">
-        <div class="row">
-            <div class="col-lg-4">
-              <div class="bs-component">
-                  <div class="card border-dark mb-3" style="max-width: 20rem;">
-                      <div class="card-header">Feature1</div>
-                      <div class="card-body">
-                        <h4 class="card-title">Protein 3D Structure Predict</h4>
-                        <p class="card-text">An efficient algorithm provided for predicting protein's 3D structure.</p>
-                      </div>
-                  </div>
+        <div style = "margin-bottom:2px;text-align: center">
+            <div class="row">
+                <div class="col-lg-6">
+                    <img src="{% static "./origin_pics/fig1.png"%}" width="100%" height="100%"></img>
+                </div>
+                <div class="col-lg-6">
+                    <img src="{% static "./origin_pics/fig2.png"%}" width="100%" height="100%"></img>
+                </div>
               </div>
-            </div>
-            <div class="col-lg-4">
-              <div class="bs-component">
-                  <div class="card border-info mb-3" style="max-width: 20rem;">
-                      <div class="card-header">Feature2</div>
-                      <div class="card-body">
-                        <h4 class="card-title">Amino Acid Distribution Analyze</h4>
-                        <p class="card-text">Quick view of the distribution for amino acids. </p>
-                      </div>
-                  </div>
-              </div>
-            </div>
-  
-            <div class="col-lg-4">
-              <div class="bs-component">
-                  <div class="card border-success mb-3" style="max-width: 20rem;">
-                      <div class="card-header">Feature3</div>
-                      <div class="card-body">
-                        <h4 class="card-title">Online and Offline System Provided</h4>
-                        <p class="card-text">We also provide the offline system which is build by Python.</p>
-                      </div>
-                  </div>
-              </div>
-            </div>
-          </div>
         </div>
+        <p>
+            Based on the research, we establised the <b>Spherical Coordinate System</b> and analyzed different
+            kind of amino acid pairs. The coordinate system is shown in the following figure.
+        </p>
+        <div style = "text-align: center">
+            <img src="{% static "./origin_pics/fig3.png"%}" width="30%" height="30%"></img>
+        </div>
+        <p>
+            For amino acids in a protein, every two amino acids can be regard as a pair. For the evaluation of the entire structure, 
+            not all pairs have positive effect. In fact, pairings that are too far can have a negative impact on the evaluation.
+            We propose a "<b>cutoff</b>" in that background. According to the different settings of cutoff, 
+            Nepre generates two branching algorithms, <b>Nepre-R</b> and <b>Nepre-F</b>.
+        </p>
+        <p>
+            <b>Nepre-R</b> uses the radius sum of amino acid pair as the cutoff. Distance lower than the cutoff will be
+            regard as the effective pair. We use <b>30,000</b> high-resolution protein and get the statistal result
+            of each kind amino acid. Then, gaussian function is used to fit the statistical data and use mean value
+            as the radius. Following figure shows the radius distribution. Details can be found 
+            at <a href="https://github.com/TangYuan-Liu/Nepre/tree/master/Radius">
+               Radius Value</a>. 
+            
+        </p>
+        <div style = "text-align: center">
+            <img src="{% static "./origin_pics/fig4.png"%}" width="70%" height="70%"></img>
+        </div>
+        <p>
+            <b>Nepre-F</b> uses a more universal value as the cutoff. Experiment shows that setting cutoff to <b>6 angstrom</b>
+            can get the best native structure recognition. The pearson coefficient distribution are shown in the following
+            figure(Using decoy set <b>3DRobot</b> from <a href="https://zhanglab.ccmb.med.umich.edu/decoys/">zhanglab</a>). 
+        </p>
+        <div style = "text-align: center">
+            <img src="{% static "./origin_pics/fig5.png"%}" width="70%" height="70%"></img>
+        </div>
+    </div>
 
-      
-
+    <div style = "margin-left:80px; margin-top:40px; margin-right:80px">
+        <h4 style = "color:cornflowerblue">Summary</h4>
+        <hr></hr>
+    </div>
+    <div style = "margin-left:120px; margin-top:40px; margin-right:120px;text-align: justify">
+        Expement results show Nepre performs well on many decoy sets. It is a efficient and stable scoring function
+        for protein structure assessment. Following figure shows a example of recognition the native structure on 1BYIA.
+        <div style = "text-align: center">
+            <img src="{% static "./origin_pics/fig6.png"%}" width="70%" height="70%"></img>
+        </div>
+    </div>
 
       
 

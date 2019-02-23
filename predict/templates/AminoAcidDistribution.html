@@ -34,9 +34,6 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" href="/index/">Home</a>
-            </li>
-            <li class="nav-item">
               <a class="nav-link" href="/introduction/">Introduction</a>
             </li>
             
@@ -56,7 +53,6 @@
               <a class="nav-link" href="/download/">Download</a>
             </li>
           </ul>
-
         </div>
       </div>
     </div>
@@ -68,174 +64,192 @@
         </div>
       </div>
 
+    <div style = "margin-left:80px; margin-top:40px; margin-right:80px">
+      <h4 style = "color:cornflowerblue">Pair Distribution Preference</h4>
+      <hr></hr>
+      <div style = "margin-left:40px; margin-top:40px; margin-right:40px;text-align: justify">
+          <p>
+               Each kind amino acid has own ditribution preference. We counted the existing PDB dataset
+               (<b>Before June 2017</b>) and analyzed the distribution of each kind of amino acid pairs. </p>
+          <p>
+               For each kind of amino acid pair, we establish a <b>spherical coordinate system</b> using <b>r,θ,φ</b>. 
+               For both Nepre-R and Nepre-F, int the direction of <b>θ,φ</b>, each of them are divided into <b>20</b> 
+               parts. In the direction <b>r</b>, only one layer is included. 
+          </p>
+          <p>
+               For protein structure assessment, our experiment shows using one layer with cutoff 6 angstrom gets the 
+               best recognition. But we also find some interesting thing in other layers of amino acid pairs. The following
+               4 figures show pairs distribution preference of <b>CYS-GLY</b> in different layers.
+          </p>
+          <div style = "margin-bottom:2px;text-align: center">
+              <div class="row">
+                  <div class="col-lg-6">
+                      <img src="{% static "./origin_pics/fig9.png"%}" width="100%" height="100%"></img>
+                  </div>
+                  <div class="col-lg-6">
+                      <img src="{% static "./origin_pics/fig10.png"%}" width="100%" height="100%"></img>
+                  </div>
+                </div>
+          </div>
+          <div style = "margin-bottom:2px;text-align: center">
+              <div class="row">
+                  <div class="col-lg-6">
+                      <img src="{% static "./origin_pics/fig11.png"%}" width="100%" height="100%"></img>
+                  </div>
+                  <div class="col-lg-6">
+                      <img src="{% static "./origin_pics/fig12.png"%}" width="100%" height="100%"></img>
+                  </div>
+                </div>
+          </div>
+          <p>
+              The following two table shows the detail of layers subregion of the coordinate system.
+          </p>
+          <div style = "margin-top:20px;text-align: center">
+              <div class="row">
+                  <div class="col-lg-6">
+                      <table class="table table-hover">
+                          <thead>
+                            <tr>
+                              <th scope="col">NO</th>
+                              <th scope="col">Subinterval(Å)</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr class="table-default">
+                              <th scope="row">0</th>
+                              <td>[0,6]</td>
+                            </tr>
+                            <tr class="table-default">
+                                <th scope="row">1</th>
+                                <td>(6,7]</td>
+                            </tr>
+                            <tr class="table-default">
+                                <th scope="row">2</th>
+                                <td>(7,8]</td>
+                            </tr>
+                            <tr class="table-default">
+                                <th scope="row">3</th>
+                                <td>(8,9]</td>
+                            </tr>
+                            <tr class="table-default">
+                                <th scope="row">4</th>
+                                <td>(9,10]</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                  </div>
+                  <div class="col-lg-6">
+                      <table class="table table-hover">
+                          <thead>
+                            <tr>
+                              <th scope="col">Paramter</th>
+                              <th scope="col">r</th>
+                              <th scope="col">θ</th>
+                              <th scope="col">φ</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr class="table-default">
+                              <th scope="row">Total</th>
+                              <td>10Å</td>
+                              <td>180°</td>
+                              <td>360°</td>
+                            </tr>
+                            <tr class="table-default">
+                              <th scope="row">Subinterval Amount</th>
+                              <td>5</td>
+                              <td>20</td>
+                              <td>20</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                   </div>
+                </div>
+          </div>
+          <p>
+              It shows that each kind of amino acid pair in different layer has some specific concentrated 
+              distribution area, which suggests that amino acid pairs tend to appear in these regions.
+          </p>
+      </div>
+    </div>
     
-    <div style="margin-left:80px; margin-right:80px">
-      <hr></hr>
-    </div>
 
-    <div style = "margin-left:80px; margin-top:40px; margin-right:80px">
-      <h4 style = "color:cornflowerblue">Introduction</h4>
+
+  <div style = "margin-left:80px; margin-top:40px; margin-right:80px">
+      <h4 style = "color:cornflowerblue">Application</h4>
       <hr></hr>
-      <p>Each kind amino acid has own ditribution preference. We counted the existing PDB dataset(June 2017) and
-         analyzed the distribution of each kind of amino acid pairs. </p>
-      <p>For each kind of amino acid pair, we establish a spherical coordinate and split them as fllows,</p>
-      
-    </div>
-    <div style="margin-left:400px;margin-top:20px;margin-right:400px">
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th scope="col">Paramter</th>
-          <th scope="col">r</th>
-          <th scope="col">θ</th>
-          <th scope="col">φ</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="table-default">
-          <th scope="row">Total</th>
-          <td>10Å</td>
-          <td>180°</td>
-          <td>360°</td>
-        </tr>
-        <tr class="table-default">
-          <th scope="row">Subinterval Amount</th>
-          <td>5</td>
-          <td>20</td>
-          <td>20</td>
-        </tr>
-      </tbody>
-    </table> 
-    </div>
-    <div style="margin-left:80px">
-        <p>According to the statitical analysis of the <b>r</b> paramter, we find that it is almost empty when 
-          setting <b>r</b>> to [0,6] angstrom. So subintervals of r direction are splited as fllows, 
-        </p>
-    </div>
-    <div style="margin-left:400px;margin-top:20px;margin-right:600px">
-        <table class="table table-hover">
-          <thead>
-            <tr>
-              <th scope="col">NO</th>
-              <th scope="col">Subinterval(Å)</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="table-default">
-              <th scope="row">0</th>
-              <td>[0,6]</td>
-            </tr>
-            <tr class="table-default">
-                <th scope="row">1</th>
-                <td>(6,7]</td>
-            </tr>
-            <tr class="table-default">
-                <th scope="row">2</th>
-                <td>(7,8]</td>
-            </tr>
-            <tr class="table-default">
-                <th scope="row">3</th>
-                <td>(8,9]</td>
-            </tr>
-            <tr class="table-default">
-                <th scope="row">4</th>
-                <td>(9,10]</td>
-            </tr>
-          </tbody>
-        </table> 
-    </div>
-    <div style = "margin-left:80px; margin-top:40px; margin-right:80px">
-        <h4 style = "color:cornflowerblue">Application</h4>
-        <hr></hr>
+      <div style="margin-left:40px;text-align: justify">
+          Each amino acid pair has a center amino acid and a surround amino acid(<b>CYS-GLY</b> is different from
+          <b>GLY-CYS</b>). Choose a pair and select the layer. Then the following application will return the 
+          distribution preference of that kind of pair. 
       </div>
-    <form class = "form-inline" method = "post" action="/getAADistribute/">
-    {% csrf_token %}
-    <fieldset>
-    <div style="margin-left:80px">
-    <p class="text-danger">Notes: ALA-GLY is different from GLY-ALA</p>
-    <p><b>Center Amino Acid Type</b> means the amino acid type of the origin of the spherical coordinate.   <b>Surround Amino Acid Type</b> means the paired amino acid type.</p>
-    </div>
-    <div class="form-group" style = "margin-left:80px;margin-top:10px;margin-right:1620px;float:left;display:inline">
-        <label>Center</label>
+  </div>
+  <br></br>
+  <br></br>
+  <div style = "text-align: center">
+    <form class="form-inline" method="post" action="/getAADistribute/">
+      {% csrf_token %}
+      <div class="form-group" style="margin:auto">
+        <label><b>Center Amino Acid:&nbsp;</b></label>
         <select style="height:30px;font-size:14px" name="center">
-          <option>ALA</option>
-          <option>VAL</option>
-          <option>LEU</option>
-          <option>ILE</option>
-          <option>PHE</option>
-          <option>TRP</option>
-          <option>MET</option>
-          <option>PRO</option>
-          <option>GLY</option>
-          <option>SER</option>
-          <option>THR</option>
-          <option>CYS</option>
-          <option>TYR</option>
-          <option>ASN</option>
-          <option>GLN</option>
-          <option>HIS</option>
-          <option>LYS</option>
-          <option>ARG</option>
-          <option>ASP</option>
-          <option>GLU</option>
-        </select>
-      </div>
-      
-      <div class="form-group" style = "margin-left:80px;margin-top:10px;margin-right:1600px;float:left;display:inline">
-          <label>Surround:</label>
-          <div class="form-group">
-          <select style="height:30px;font-size:14px" name="surround">
             <option>ALA</option>
-            <option>VAL</option>
-            <option>LEU</option>
-            <option>ILE</option>
-            <option>PHE</option>
-            <option>TRP</option>
-            <option>MET</option>
-            <option>PRO</option>
+            <option>ARG</option>
+            <option>ASN</option>
+            <option>ASP</option>
+            <option>CYS</option>
+            <option>GLN</option>
+            <option>GLU</option>
             <option>GLY</option>
+            <option>HIS</option>
+            <option>ILE</option>
+            <option>LEU</option>
+            <option>LYS</option>
+            <option>MET</option>
+            <option>PHE</option>
+            <option>PRO</option>
             <option>SER</option>
             <option>THR</option>
-            <option>CYS</option>
+            <option>TRP</option>
             <option>TYR</option>
-            <option>ASN</option>
-            <option>GLN</option>
-            <option>HIS</option>
-            <option>LYS</option>
+            <option>VAL</option>
+        </select>
+        <label><b>&nbsp;&nbsp; Surround Amino Acid:&nbsp;</b></label>
+        <select style="height:30px;font-size:14px" name="surround">
+            <option>ALA</option>
             <option>ARG</option>
+            <option>ASN</option>
             <option>ASP</option>
+            <option>CYS</option>
+            <option>GLN</option>
             <option>GLU</option>
-          </select>
-        </div>
-    </div>
-    <div class="form-group" style = "margin-left:80px;margin-top:10px;margin-right:1600px;float:left;display:inline">
-      <label>Layer:</label>
-      <div class="form-group">
-      <select style="height:30px;font-size:14px" name="layer">
-        <option>0</option>
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-      </select>
+            <option>GLY</option>
+            <option>HIS</option>
+            <option>ILE</option>
+            <option>LEU</option>
+            <option>LYS</option>
+            <option>MET</option>
+            <option>PHE</option>
+            <option>PRO</option>
+            <option>SER</option>
+            <option>THR</option>
+            <option>TRP</option>
+            <option>TYR</option>
+            <option>VAL</option>
+        </select>
+        <label><b>&nbsp;&nbsp; Layer:&nbsp;</b></label>
+        <select style="height:30px;font-size:14px" name="layer">
+          <option>0</option>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+        </select>
+        <label> &nbsp;&nbsp;&nbsp; </label>
+        <button type="submit" class="btn btn-primary">Submit</button>
       </div>
-    </div>
-    </fieldset>
-    <button type="submit" class="btn btn-primary" style="margin-left:80px;margin-top:20px">Submit</button>
     </form>
-    
-
-    <div style = "margin-left:80px; margin-top:40px; margin-right:80px">
-        <h4 style = "color:cornflowerblue">Radius Distribution</h4>
-        <hr></hr>
     </div>
-    
-    
-
-    
-
-    
-  
+  </div>
 
     
 <script src="{% static "./_vendor/jquery/dist/jquery.min.js" %}"></script>
@@ -248,6 +262,5 @@
 <div class="text" style=" text-align:center;">Department of Complex System</div>
 <div class="text" style=" text-align:center;">Email: nepre2018@163.com</div>
 </body>
-
 </html>
 

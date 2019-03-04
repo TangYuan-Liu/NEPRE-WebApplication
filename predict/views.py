@@ -6,7 +6,7 @@ import thread
 import time
 import zipfile
 import SingleStructureCalculate as sc 
-from CreatePage import createWaitPage, createResultPage, createAAResultPage
+from CreatePage import createWaitPage, createResultPage, createAAResultPage,generate_3d_view
 from django.http import HttpResponse
 import MakePlot
 import sys
@@ -182,9 +182,9 @@ def getResultsPage(request):
         Job_id = request.POST["job_id"]
         print request.POST
     if request.method == "GET":
-        print("hahahah")
         url = request.path
         url = url.encode()
+        print("This is URL")
         print url
         
         struc = url[-10:]
@@ -219,19 +219,30 @@ def AADistribute(request):
 
 def getAADistribute(request):
     if request.method == "POST":
-        #print request.POST
-        layer = request.POST["layer"]
+        #layer = request.POST["layer"]
         center = request.POST["center"]
         surround = request.POST["surround"]
-        print layer,center,surround
+        #print layer,center,surround
         
-        os.system("python ./predict/MakePlot.py " + center + " " + surround + " " + layer)
-        #MakePlot.contourmap(center,surround,int(layer))
+        #os.system("python ./predict/MakePlot.py " + center + " " + surround + " " + '0')
+        #MakePlot.contourmap(center,surround,0)
         
-        createAAResultPage(center,surround,layer)
-        html_path = "./AADistribute/" + center + '-' + surround + "-" + layer + ".html"
+        #createAAResultPage(center,surround,layer)
+        generate_3d_view(center,surround)
+        html_path = "./AADistribute/" + center + '-' + surround + ".html"
         
-    return render(request, html_path)
+        return render(request, html_path)
+
+    if request.method == "GET":
+        url = request.path
+        url = url.encode()
+        print("This is URL")
+        print url
+        data = url[-11:]
+        
+        data_path = "./predict/AA3D_view/" + data
+        f = open(data_path,'rb')
+        return HttpResponse(f,content_type="text/pdb")
 
 
 def download(request):

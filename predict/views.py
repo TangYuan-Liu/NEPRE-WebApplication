@@ -14,6 +14,10 @@ sys.path.append("./predict/Radius")
 sys.path.append("./predict/Cutoff")
 import Nepre_R
 import Nepre_F
+import smtplib
+from email.mime.text import MIMEText
+from email.header import Header
+from email.mime.multipart import MIMEMultipart
 # Create your views here.
 
 def index(request):
@@ -32,21 +36,31 @@ def psp(request):
     pass
     return render(request, "psp.html")
 
-"""
-# using Nepre-R to calculate
-def nepre_r(f):
-    Matrix = Nepre_R.load_EnergyMatrix()
-    E = Nepre_R.calculate_Energy(f,Matrix)
-    return E
 
-# using Nepre-F to calculate
-def nepre_f(f,cutoff):
-    Matrix = Nepre_F.load_EnergyMatrix(cutoff)
-    E = Nepre_F.calculate_Energy(f,Matrix,cutoff)
-    return E
-"""
+def send_email(SMTP_host, from_account, from_passwd, to_account, subject, content):
 
-def calcEnergy_r(request,cur_time):
+    email_client = smtplib.SMTP(SMTP_host)
+    email_client.login(from_account, from_passwd)
+    # create msg
+    msg = MIMEText(content, 'plain', 'utf-8')
+    msg['Subject'] = Header(subject, 'utf-8')
+    msg['From'] = from_account
+    msg['To'] = to_account
+    email_client.sendmail(from_account, to_account, msg.as_string())
+    email_client.quit()
+    print("Done")
+
+def send_notice(text,to_account):
+
+    host = "smtp.163.com"
+    username = "nepre2018@163.com"
+    passwd = "nepre2018liulab"
+    subject = "NEPRE Science"
+    send_email(host, username, passwd, to_account, subject, text)
+
+
+
+def calcEnergy_r(request,cur_time,email):
 
     if request.method == "POST":
         file_obj = request.FILES.get("up_file")
@@ -86,9 +100,12 @@ def calcEnergy_r(request,cur_time):
 
     print "Cal Finish:",time.time()
     print energy_list
+    
+    text = "Your job submitted in NEPRE-WebApplication has completed." + '\n' + "ID: " + cur
+    send_notice(text,email)
 
 
-def calcEnergy_f(request,cur_time):
+def calcEnergy_f(request,cur_time,email):
 
     if request.method == "POST":
         file_obj = request.FILES.get("up_file")
@@ -132,15 +149,18 @@ def calcEnergy_f(request,cur_time):
 
     print "Cal Finish:",time.time()
     print energy_list
+    text = "Your job submitted in NEPRE-WebApplication has completed." + '\n' + "ID: " + cur
+    send_notice(text,email)
 
 def nepre_r(request):
     name = ""
     if request.method == "POST":
         file_obj = request.FILES.get("up_file")
         name = file_obj.name
+        email = request.POST["to_email"]
     cur_time = int(time.time())
     try:
-        thread.start_new_thread(calcEnergy_r, (request,cur_time,))
+        thread.start_new_thread(calcEnergy_r, (request,cur_time,email,))
     except:
         return render(request,"error.html")
     print "psp finish:", time.ctime()

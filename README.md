@@ -1,12 +1,12 @@
-<div align="left">
-<img style="flex-grow:1; flex-shrink:1; border: 0px solid black;" src="./logo.jpg" width="210" />
-</div>
-<div align="left">
+# NEPRE WEB APPLICATION
+
+![](https://img.shields.io/badge/license-GNU-seagreen.svg?style=flat-square)
+![](https://img.shields.io/badge/version-V2.0-blue.svg?style=flat-square)
+![](https://img.shields.io/badge/language-Python-orange.svg?style=flat-square)
+![](https://img.shields.io/badge/platform-Linux|Windows-blue.svg?style=flat-square&logo=windows)
 
 [LiuLab]() | [Document]() | [WebServer Link]() | [Nepre Potential]() | [Software Link]()
 
-## NEPRE WEB APPLICATION
-The webserver for **Nepre**.
 
 ## Develope Environment
 * Python 2.7

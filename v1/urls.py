@@ -30,4 +30,5 @@ urlpatterns = [
     url(r'^getAADistribute/',predictViews.getAADistribute),
     url(r'^download/',predictViews.download),
     url(r'^method/', predictViews.method),
+    url(r'^primary/', predictViews.primary),
 ]

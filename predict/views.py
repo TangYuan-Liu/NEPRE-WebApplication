@@ -6,7 +6,7 @@ import thread
 import time
 import zipfile
 import SingleStructureCalculate as sc 
-from CreatePage import createWaitPage, createResultPage, createAAResultPage,generate_3d_view
+from CreatePage import createWaitPage, createResultPage, createAAResultPage,generate_3d_view,create_primary_page
 from django.http import HttpResponse
 import MakePlot
 import sys
@@ -268,3 +268,100 @@ def getAADistribute(request):
 def download(request):
     pass
     return render(request, "download.html")
+
+
+def extract_Data(line):
+    """
+    This part will extracted data from line according to the standard 
+    PDB file format(Version 3.3.0, Nov.21, 2012)
+    """
+    res = []
+
+    line = line.strip()
+    #record_name
+    res.append(line[0:4].strip(' '))
+
+    #atom_serial
+    res.append(line[6:11].strip(' '))
+
+    #atom_name
+    res.append(line[12:16].strip(' '))
+
+    #alternate_indicator
+    res.append(line[16])
+
+    #residue_name
+    res.append(line[17:20].strip(' '))
+
+    #chain_id
+    res.append(line[21].strip(' '))
+
+    #residue_num
+    res.append(line[22:26].strip(' '))
+
+    #xcor
+    res.append(line[30:38].strip(' '))
+
+    #ycor
+    res.append(line[38:46].strip(' '))
+
+    #zcor
+    res.append(line[46:54].strip(' '))
+   
+    return res
+
+
+
+def primary_extract(f):
+    primary = []
+    current_num = None
+    amino_dict = {}
+
+    for line in f.readlines():
+        temp = line.strip().split()
+        if(temp[0] != "ATOM"):
+            continue
+        line = extract_Data(line)
+        residue_num = line[6]
+        residue_name = line[4]
+        if(current_num is None):
+            primary.append(residue_name)
+            current_num = residue_num
+        else:
+            if(current_num != residue_num):
+                primary.append(residue_name)
+                current_num = residue_num
+
+    for d in primary:
+        if(d not in amino_dict):
+            amino_dict[d] = 1
+        else:
+            amino_dict[d] += 1
+    
+    return primary,amino_dict
+
+
+def primary(request):
+    if request.method == "POST":
+        file_obj = request.FILES.get("up_file")
+        name = file_obj.name
+        cur = str(int(time.time()))
+        os.mkdir("./uploadfiles/" + cur)
+        f1 = open("./uploadfiles/" + cur + '/' + file_obj.name, "wb")
+        for i in file_obj.chunks():
+            f1.write(i)
+        f1.close()
+        f = open("./uploadfiles/" + cur + '/' + file_obj.name,'r')
+        _,amino_dict = primary_extract(f)
+
+        data = [(k,amino_dict[k]) for k in sorted(amino_dict.keys())] 
+        keys = []
+        values = []
+        
+        for i in range(len(data)):
+            keys.append(data[i][0])
+            values.append(data[i][1])
+        print len(keys)
+        create_primary_page(keys,values,cur)
+        html_path = "./temp/" + cur + "primary.html"
+    return render(request, html_path)

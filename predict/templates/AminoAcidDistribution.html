@@ -241,7 +241,22 @@
       </div>
     </form>
     </div>
-  </div>
+    <div style="margin-left:120px;margin-top:40px;text-align: justify">
+      Input an PDB and get the primary structure and the statistical results. 
+    </div>
+
+    <div style = "margin-top:20px;text-align: center">
+      <form enctype="multipart/form-data" method="post" action="/primary/">
+        {% csrf_token %}
+        <fieldset>
+          <div class="form-group" style="margin:auto;">
+            <input type="file" id="Nepre-R" name = "up_file" style="height:30px;font-size:14px;width:150px">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+
 
     
 <script src="{% static "./_vendor/jquery/dist/jquery.min.js" %}"></script>
